@@ -27,13 +27,13 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        username: thirukumaran24
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build and Push Docker Image
       run: |
         UNIQUE_TAG=$(git rev-parse --short HEAD)
-        IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/shopping-bill"
+        IMAGE_NAME="thirukumaran24/shopping-bill"
         docker build -t $IMAGE_NAME:$UNIQUE_TAG .
         docker push $IMAGE_NAME:$UNIQUE_TAG
         echo "Built and pushed image tag: $UNIQUE_TAG"
